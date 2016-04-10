@@ -51,3 +51,24 @@ CREATE TABLE `foame`.`product_ingredients` (
   REFERENCES `foame`.`stocks` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+CREATE TABLE `foame`.`history` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `date` DATETIME NULL COMMENT '',
+  `total_price` DOUBLE NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
+
+CREATE TABLE `foame`.`order_content` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `quantity` INT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  CONSTRAINT `order_id`
+  FOREIGN KEY (`id`)
+  REFERENCES `foame`.`history` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `prod_id`
+  FOREIGN KEY (`id`)
+  REFERENCES `foame`.`products` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
