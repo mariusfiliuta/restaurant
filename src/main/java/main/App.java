@@ -27,5 +27,4 @@ public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
         SpringApplication.run(App.class, args);
     }
 
-
 }

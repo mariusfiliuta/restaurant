@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Login</title>
-        <th:block th:include="common/assets :: common-scripts" />
         <th:block th:include="common/meta :: common-meta" />
         <th:block th:include="common/assets :: common-styles" />
         <link rel="stylesheet" href="/static/css/login.css"/>
@@ -22,7 +21,7 @@
                     <div class="wrap">
                         <p class="form-title">
                             Sign In</p>
-                        <form class="login">
+                        <form class="login" method = "post" th:action = "@{login}">
                             <input type="text" placeholder="Username" />
                             <input type="password" placeholder="Password" />
                             <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
@@ -46,7 +45,7 @@
                 </div>
             </div>
         </div>
-
+        <th:block th:include="common/assets :: common-scripts" />
         <script src="/static/scripts/login.js"></script>
     </body>
 </html>
