@@ -11,8 +11,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistra
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @SpringBootApplication
-@ComponentScan({"model", "main", "controllers", "services"})
-@EnableJpaRepositories("repository")
+@ComponentScan({"model", "main", "controllers", "services", "repositories"})
+@EnableJpaRepositories("repositories")
 @EntityScan(basePackages = { "model"})
 @EnableScheduling
 public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{

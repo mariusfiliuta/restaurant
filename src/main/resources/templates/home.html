@@ -48,6 +48,10 @@
             </a>
         </header>
 
+        <div th:each="user : ${allUsers}">
+            <h1 th:if="${user.contactName} == 'marius'" th:text="${user.contactName}"></h1>
+        </div>
+
         <div class="container">
 
             <!-- Marketing Icons Section -->
