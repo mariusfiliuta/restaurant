@@ -22,7 +22,7 @@ public class User {
     @Column (name = "role")
     private String role;
 
-    @Column (name = "name")
+    @Column (name = "name", unique = true)
     private String contactName;
 
     public User() {}; // jpa

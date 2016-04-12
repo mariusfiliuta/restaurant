@@ -41,15 +41,27 @@ public class UserServiceImpl implements UserService {
 
     // Update functions
     @Override
-    public boolean save(User user){
-        if(userRepository.existsUserName(user.getUserName()))
+    public boolean add(String userName, String password, String role, String contactName){
+        if(userRepository.existsUserName(userName))
             return false;
-
+        User user = new User();
+        user.setUserName(userName);
+        user.setPassword(password);
+        user.setRole(role);
+        user.setContactName(contactName);
         userRepository.save(user);
         return true;
 
     }
+    @Override
+    public boolean edit(User user)
+    {
+        if(!userRepository.existsUserName(user.getUserName()))
+            return false;
 
+        userRepository.save(user);
+        return true;
+    }
 
     /*
     Functie fara utilitate

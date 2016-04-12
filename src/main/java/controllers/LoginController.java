@@ -22,17 +22,10 @@ public class LoginController {
 
     @ModelAttribute("allUsers")
     private List<User> getAllUsers() {
-        User a = new User();
-        //a.setId(12);
-        a.setPassword("asf");
-        a.setRole("admin");
-        a.setContactName("Pula mea");
-        a.setUserName("useru");
-        userService.save(a);
+        userService.add("useruvietii","parola","user","Gica");
         return userService.findAll();
     }
     */
-
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String getLoginPage() {
         return "login";

@@ -20,7 +20,8 @@ public interface UserService {
     void deleteByContactName(String contactName);
 
     // Update functions
-    boolean save(User user);
+    boolean add(String userName, String password, String role, String contactName);
+    boolean edit(User user);
 
     /*
     Functie fara utilitate
