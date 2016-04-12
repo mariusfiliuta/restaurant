@@ -64,8 +64,6 @@ public class User {
         return contactName;
     }
 
-    public void setContactName(String contactName) {
-        this.contactName = contactName;
-    }
+    public void setContactName(String contactName) { this.contactName = contactName; }
 
 }

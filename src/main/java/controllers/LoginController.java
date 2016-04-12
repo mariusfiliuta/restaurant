@@ -14,14 +14,24 @@ import java.util.List;
 @Controller
 public class LoginController {
 
+
+    /*
+    Manual Testing
     @Autowired
     private UserService userService;
 
     @ModelAttribute("allUsers")
     private List<User> getAllUsers() {
+        User a = new User();
+        //a.setId(12);
+        a.setPassword("asf");
+        a.setRole("admin");
+        a.setContactName("Pula mea");
+        a.setUserName("useru");
+        userService.save(a);
         return userService.findAll();
     }
-
+    */
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public String getLoginPage() {
