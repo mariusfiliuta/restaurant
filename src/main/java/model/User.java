@@ -27,7 +27,6 @@ public class User {
 
     public User() {}; // jpa
 
-
     public long getId() {
         return id;
     }

@@ -12,6 +12,11 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+    <orderEntry type="library" name="Maven: org.flywaydb:flyway-core:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.flywaydb:flyway-core:3.2.1" level="project" />
+=======
+>>>>>>> 9a845d8a79c55b309d004387277b37dd251aec98
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-dependencies:1.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-thymeleaf:1.3.3.RELEASE" level="project" />
