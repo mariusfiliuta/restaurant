@@ -1,9 +1,9 @@
-package services;
+package foamenbot.services;
 
-import model.Category;
+import foamenbot.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.CategoryRepository;
+import foamenbot.repositories.CategoryRepository;
 
 import java.util.List;
 

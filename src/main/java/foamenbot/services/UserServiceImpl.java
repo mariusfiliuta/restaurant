@@ -1,9 +1,9 @@
-package services;
+package foamenbot.services;
 
-import model.User;
+import foamenbot.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositories.UserRepository;
+import foamenbot.repositories.UserRepository;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package config;
+package foamenbot.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -8,7 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
-import services.UserService;
+import foamenbot.services.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package model;
+package foamenbot.model;
 
 import com.sun.istack.internal.NotNull;
 

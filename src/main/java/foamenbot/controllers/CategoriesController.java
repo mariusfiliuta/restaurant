@@ -1,12 +1,12 @@
-package controllers;
+package foamenbot.controllers;
 
-import model.Category;
+import foamenbot.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import services.CategoryService;
+import foamenbot.services.CategoryService;
 
 import java.util.List;
 

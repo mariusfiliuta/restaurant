@@ -1,6 +1,6 @@
-package repositories;
+package foamenbot.repositories;
 
-import model.Category;
+import foamenbot.model.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

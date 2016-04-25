@@ -1,4 +1,4 @@
-package main;
+package foamenbot.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +10,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
 @SpringBootApplication
-@ComponentScan({"model", "main", "controllers", "services", "repositories", "config"})
-@EnableJpaRepositories("repositories")
+@ComponentScan("foamenbot")
+@EnableJpaRepositories("foamenbot.repositories")
 @EntityScan(basePackages = { "model"})
 @EnableScheduling
 public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{

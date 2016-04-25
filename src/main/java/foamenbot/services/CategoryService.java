@@ -1,6 +1,6 @@
-package services;
+package foamenbot.services;
 
-import model.Category;
+import foamenbot.model.Category;
 import java.util.List;
 
 public interface CategoryService {
