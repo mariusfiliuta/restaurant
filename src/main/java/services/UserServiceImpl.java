@@ -21,5 +21,9 @@ public class UserServiceImpl implements UserService {
     public List<User> findByContactName(String contactName){ return userRepository.findByContactName(contactName);}
     @Override
     public List<User> findByContactNameContaining(String contactName){ return userRepository.findByContactNameContaining(contactName);}
+    @Override
+    public void save(User user){ userRepository.save(user);}
+    @Override
+    public void delete(User user){ userRepository.delete(user);}
 
 }

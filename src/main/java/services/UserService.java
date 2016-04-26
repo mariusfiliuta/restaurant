@@ -11,5 +11,7 @@ public interface UserService {
     List<User> findByRole(String role);
     List<User> findByContactName(String contactName);
     List<User> findByContactNameContaining(String contactName);
+    void save(User user);
+    void delete(User user);
 
 }
