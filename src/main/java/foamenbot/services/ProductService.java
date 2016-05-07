@@ -1,7 +1,6 @@
-package services;
+package foamenbot.services;
 
-import model.Product;
-import org.springframework.stereotype.Service;
+import foamenbot.model.Product;
 
 import java.util.List;
 

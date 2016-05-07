@@ -1,8 +1,4 @@
-package model;
-
-import foamenbot.model.Order;
-import foamenbot.model.OrderProduct;
-import foamenbot.model.Product;
+package foamenbot.model;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

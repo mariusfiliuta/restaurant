@@ -1,6 +1,4 @@
-package model;
-
-import com.sun.istack.internal.NotNull;
+package foamenbot.model;
 
 import javax.persistence.*;
 

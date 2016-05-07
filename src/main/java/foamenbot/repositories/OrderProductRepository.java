@@ -1,6 +1,6 @@
-package repositories;
+package foamenbot.repositories;
 
-import model.OrderProduct;
+import foamenbot.model.OrderProduct;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
