@@ -41,7 +41,7 @@ public class HomeController {
             model.addAttribute("user", user);
             return "createAdmin";
         }
-        user.setRole("ADMIN");
+        user.setRole("ROLE_ADMIN");
 
         String encodedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPass);
