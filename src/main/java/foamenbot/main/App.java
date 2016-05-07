@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 @SpringBootApplication
 @ComponentScan("foamenbot")
 @EnableJpaRepositories("foamenbot.repositories")
-@EntityScan(basePackages = { "model"})
+@EntityScan(basePackages = { "foamenbot.model"})
 @EnableScheduling
 public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
 

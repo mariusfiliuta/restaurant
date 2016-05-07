@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <th:block th:include="common/meta :: common-meta" />
+        <th:block th:include="common/assets :: common-styles" />
+        <link rel="stylesheet" href="/static/css/home.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <form class="form-horizontal" th:action="@{/createAdmin}" th:object="${user}" method = "post">
+            <div class = "form-group">
+                <div class = "col-xs-4 text-right">
+                    <label class="control-label" for="nume">User Name:</label>
+                </div>
+                <div class = "col-xs-6">
+                    <input class="form-control" id="nume" type = "text" placeholder = "JohnDoe" th:field="*{userName}"/>
+                    <p th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="alert alert-danger"/>
+                </div>
+
+                <div class = "col-xs-2"></div>
+            </div>
+
+            <div class = "form-group">
+                <div class = "col-xs-4 text-right">
+                    <label class="control-label" for="prenume" >Password:</label>
+                </div>
+                <div class = "col-xs-6">
+                    <input class="form-control" id="prenume" placeholder = "*****" type = "password" th:field="*{password}"/>
+                </div>
+                <div class = "col-xs-2"></div>
+            </div>
+
+            <div class = "form-group">
+                <div class = "col-xs-4 text-right">
+                    <label class="control-label" for="contactName">Contact name:</label>
+                </div>
+                <div class = "col-xs-6">
+                    <input class="form-control" id="contactName" type = "text" placeholder = "John" th:field="*{contactName}"/>
+                </div>
+                <div class = "col-xs-2"></div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-success">
+                        Create
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </body>
+</html>

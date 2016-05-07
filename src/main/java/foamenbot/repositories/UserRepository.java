@@ -11,12 +11,14 @@ import java.util.List;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    public List<User> findAll();
-    public List<User> findByRole(String role);
-    public List<User> findByContactName(String contactName);
-    public List<User> findByContactNameContaining(String contactName);
+    List<User> findAll();
+    List<User> findByRole(String role);
+    List<User> findByContactName(String contactName);
+    List<User> findByContactNameContaining(String contactName);
+    User findByUserNameAndPassword(String userName, String Password);
+    List<User> findByUserName(String userName);
 
     @Query("SELECT CASE WHEN COUNT(u) > 0 THEN 'true' ELSE 'false' END FROM User u WHERE u.userName = ?1")
-    public boolean existsUserName(String userName);
+    boolean existsUserName(String userName);
 
 }
