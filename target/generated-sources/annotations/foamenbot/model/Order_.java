@@ -1,7 +1,4 @@
-package model;
-
-import foamenbot.model.Order;
-import foamenbot.model.OrderProduct;
+package foamenbot.model;
 
 import java.sql.Date;
 import javax.annotation.Generated;

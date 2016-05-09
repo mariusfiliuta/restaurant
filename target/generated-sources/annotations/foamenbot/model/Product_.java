@@ -1,6 +1,4 @@
-package model;
-
-import foamenbot.model.Product;
+package foamenbot.model;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
@@ -14,6 +12,7 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, String> description;
 	public static volatile SingularAttribute<Product, Long> id;
 	public static volatile SingularAttribute<Product, Boolean> in_stock;
+	public static volatile SingularAttribute<Product, Category> category;
 	public static volatile SingularAttribute<Product, String> productName;
 
 }
