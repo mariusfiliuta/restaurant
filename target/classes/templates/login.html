@@ -22,8 +22,8 @@
                         <p class="form-title">
                             Sign In</p>
                         <form class="login" method = "post" th:action = "@{login}">
-                            <input type="text" placeholder="Username" />
-                            <input type="password" placeholder="Password" />
+                            <input type="text" placeholder="Username" name="username"/>
+                            <input type="password" placeholder="Password" name="password"/>
                             <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
                             <div class="remember-forgot">
                                 <div class="row">
