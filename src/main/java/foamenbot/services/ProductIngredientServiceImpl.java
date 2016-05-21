@@ -22,5 +22,5 @@ public class ProductIngredientServiceImpl implements  ProductIngredientService{
     @Override
     public void delete(Set<ProductIngredient> productIngredients){ productIngredientRepository.delete(productIngredients);}
     @Override
-    public ProductIngredient findById(int id){ return productIngredientRepository.findById(id);}
+    public ProductIngredient findById(long id){ return productIngredientRepository.findById(id);}
 }

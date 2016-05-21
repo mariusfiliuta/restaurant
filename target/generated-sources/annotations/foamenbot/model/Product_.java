@@ -14,7 +14,7 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, String> description;
 	public static volatile SingularAttribute<Product, String> urlTOImage;
 	public static volatile SingularAttribute<Product, Long> id;
-	public static volatile SingularAttribute<Product, Boolean> in_stock;
+	public static volatile SingularAttribute<Product, String> in_stock;
 	public static volatile SingularAttribute<Product, Category> category;
 	public static volatile SingularAttribute<Product, String> productName;
 

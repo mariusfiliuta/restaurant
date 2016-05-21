@@ -22,5 +22,5 @@ public class OrderProductServiceImpl implements OrderProductService{
     @Override
     public void delete(OrderProduct orderProduct){ orderProductRepository.delete(orderProduct);}
     @Override
-    public OrderProduct findById(int id){ return orderProductRepository.findById(id);}
+    public OrderProduct findById(long id){ return orderProductRepository.findById(id);}
 }

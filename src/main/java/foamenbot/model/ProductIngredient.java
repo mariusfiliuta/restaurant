@@ -16,7 +16,7 @@ public class ProductIngredient {
     private long quantity;
 
     @Column(name = "quantity_type")
-    private String quantity_type;
+    private String quantityType;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -25,6 +25,8 @@ public class ProductIngredient {
     @ManyToOne
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
+
+    public ProductIngredient(){}
 
     public long getId() {
         return id;
@@ -42,12 +44,12 @@ public class ProductIngredient {
         this.quantity = quantity;
     }
 
-    public String getQuantity_type() {
-        return quantity_type;
+    public String getQuantityType() {
+        return quantityType;
     }
 
-    public void setQuantity_type(String quantity_type) {
-        this.quantity_type = quantity_type;
+    public void setQuantityType(String quantity_type) {
+        this.quantityType = quantity_type;
     }
 
     public Product getProduct() {

@@ -22,6 +22,6 @@ public class CategoryServiceImpl implements  CategoryService{
     @Override
     public void save(Category category){ categoryRepository.save(category);}
     @Override
-    public Category findById(int id){ return categoryRepository.findById(id);}
+    public Category findById(long id){ return categoryRepository.findById(id);}
 
 }

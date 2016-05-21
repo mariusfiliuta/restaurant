@@ -9,5 +9,5 @@ public interface ProductIngredientService {
     void save(ProductIngredient productIngredient);
     void delete(Set<ProductIngredient> productIngredients);
     void delete(ProductIngredient productIngredient);
-    ProductIngredient findById(int id);
+    ProductIngredient findById(long id);
 }

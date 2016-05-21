@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Product</title>
+    <th:block th:include="common/meta :: common-meta"/>
+    <th:block th:include="common/assets :: common-styles"/>
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+    <th:block th:include="common/navbar :: common-navbar"/>
+    <div class="col-xs-12">
+        <div class="col-xs-6">
+            <h1 class="page-header text-center">Edit product</h1>
+            <form class="form-horizontal" th:object="${product}" method="post" style="margin-top:40px">
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="nume">Name:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="nume" type="text" placeholder="Paste" th:field="*{productName}"/>
+                        <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="alert alert-danger"/>
+                    </div>
+
+                    <div class="col-xs-2"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="pret">Price:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="pret" placeholder="12" type="number" th:field="*{price}"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="description">Description:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="description" type="text" placeholder="Descriere" th:field="*{description}"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="urlTOImage">Picture URL:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="urlTOImage" type="text" placeholder="https:\\www.pozecumancare.ro\pizza.jpg"
+                               th:field="*{urlTOImage}"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="category">Category:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <select class="form-control" th:field="*{category}">
+                            <option th:each="category: ${categories}" th:text="${category.categoryName}"
+                                    th:value="${category.id}"></option>
+                        </select>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        <a th:href="@{/edit/} + ${product.id}">
+                            <button class="btn btn-success">Edit</button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-xs-6">
+            <form class="form-horizontal" th:object="${ingredient}" method="post" style="margin-top:40px" >
+
+                <h1 class="page-header text-center">Ingredients</h1>
+                <div class = "panel panel-default">
+                    <div class="panel-heading">Current ingredients</div>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Quantity Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="productIngredient : ${productIngredients}">
+                            <td th:text="${productIngredient.ingredient.name}" >Name</td>
+                            <td th:text="${productIngredient.ingredient.quantity}">Quantity</td>
+                            <td th:text="${productIngredient.ingredient.quantityType}">Quantity Type</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <h2 class="page-header text-center">Add Ingredient</h2>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="name">Nume:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="name" placeholder="salt" type="text"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="quantity">Quantity:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="quantity" placeholder="12" type="text"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-4 text-right">
+                        <label class="control-label" for="quantityType">Type:</label>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="form-control" id="quantityType" placeholder="kg" type="text"/>
+                    </div>
+                    <div class="col-xs-2"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-success">
+                            Add Ingredient
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

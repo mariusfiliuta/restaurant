@@ -21,5 +21,5 @@ public class OrderServiceImpl implements  OrderService{
     @Override
     public List<Order> findByStatus(String status){ return orderRepository.findByStatus(status);}
     @Override
-    public Order findById(int id){ return orderRepository.findById(id);}
+    public Order findById(long id){ return orderRepository.findById(id);}
 }

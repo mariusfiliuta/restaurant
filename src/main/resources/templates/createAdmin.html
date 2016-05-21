@@ -42,6 +42,21 @@
             </div>
 
             <div class="form-group">
+                <div class="col-xs-4 text-right">
+                    <label class="control-label" for="contactRole">Contact role:</label>
+                </div>
+                <div class="col-xs-3">
+                <label class="radio-inline">
+                    <input  id="contactRole" name="role" type="radio" th:field="*{role}" th:value="ROLE_ADMIN" /> Admin
+                </label>
+                <label class="radio-inline">
+                    <input  type="radio" name="role" th:field="*{role}" th:value="ROLE_USER" /> User
+                </label>
+                </div>
+                <div class = "col-xs-2"></div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-md-12 text-center">
                     <button class="btn btn-success">
                         Create

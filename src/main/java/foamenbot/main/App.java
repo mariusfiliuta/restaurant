@@ -28,24 +28,4 @@ public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
         SpringApplication.run(App.class, args);
     }
 
-    @Bean
-    public CategoryService getCategoryService() {
-        return new CategoryServiceImpl();
-    }
-
-    @Bean
-    public OrderProductService getOrderProductService() {
-        return new OrderProductServiceImpl();
-    }
-
-    @Bean
-    public ProductService getProductService() {
-        return new ProductServiceImpl();
-    }
-
-    @Bean
-    public UserService getUserService() {
-        return new UserServiceImpl();
-    }
-
 }

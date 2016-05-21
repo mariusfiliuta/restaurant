@@ -35,7 +35,6 @@ public class CreateAdminController {
             model.addAttribute("user", user);
             return "createAdmin";
         }
-        user.setRole("ROLE_ADMIN");
 
         String encodedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPass);

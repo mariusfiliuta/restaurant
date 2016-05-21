@@ -17,7 +17,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     List<User> findByContactNameContaining(String contactName);
     User findByUserNameAndPassword(String userName, String Password);
     List<User> findByUserName(String userName);
-    User findById(int id);
+    User findById(long id);
 
     @Query("SELECT CASE WHEN COUNT(u) > 0 THEN 'true' ELSE 'false' END FROM User u WHERE u.userName = ?1")
     boolean existsUserName(String userName);

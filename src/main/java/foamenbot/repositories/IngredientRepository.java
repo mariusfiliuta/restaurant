@@ -11,5 +11,5 @@ import java.util.List;
 public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
     List<Ingredient> findAll();
     Ingredient findByName(String name);
-    Ingredient findById(int id);
+    Ingredient findById(long id);
 }

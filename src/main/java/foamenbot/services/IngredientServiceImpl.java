@@ -22,6 +22,6 @@ public class IngredientServiceImpl implements  IngredientService{
     @Override
     public void delete(Ingredient ingredient){ ingredientRepository.delete(ingredient);}
     @Override
-    public Ingredient findById(int id){ return ingredientRepository.findById(id);}
+    public Ingredient findById(long id){ return ingredientRepository.findById(id);}
 
 }

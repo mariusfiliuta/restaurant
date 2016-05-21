@@ -1,6 +1,10 @@
 package foamenbot.controllers;
 
 import foamenbot.model.Category;
+import foamenbot.model.Product;
+import foamenbot.model.ProductIngredient;
+import foamenbot.repositories.ProductRepository;
+import foamenbot.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +19,9 @@ public class CategoriesController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductService productRepository;
 
     @ModelAttribute("categories")
     private List<Category> getContacts() {
