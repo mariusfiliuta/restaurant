@@ -51,7 +51,7 @@ public class Ingredient {
         return quantityType;
     }
 
-    public void setQuantity_type(String quantityType) {
+    public void setQuantityType(String quantityType) {
         this.quantityType = quantityType;
     }
 }

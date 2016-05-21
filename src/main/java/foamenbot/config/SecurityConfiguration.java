@@ -41,6 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter implemen
                 .formLogin()
                 .loginPage("/login")
                 .permitAll();
+        http.csrf().disable();
     }
 
     @Autowired

@@ -89,14 +89,12 @@
                         <tr>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Quantity Type</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="productIngredient : ${productIngredients}">
                             <td th:text="${productIngredient.ingredient.name}" >Name</td>
-                            <td th:text="${productIngredient.ingredient.quantity}">Quantity</td>
-                            <td th:text="${productIngredient.ingredient.quantityType}">Quantity Type</td>
+                            <td th:text="${productIngredient.ingredient.quantity} + ${productIngredient.ingredient.quantityType}">Quantity</td>
                         </tr>
                         </tbody>
                     </table>

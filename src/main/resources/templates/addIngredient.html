@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Ingredient</title>
+    <th:block th:include="common/meta :: common-meta" />
+    <th:block th:include="common/assets :: common-styles" />
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+<th:block th:include="common/navbar :: common-navbar"/>
+<form class="form-horizontal" th:action="@{/addIngredient}" th:object="${ingredient}" method = "post" style="margin-top:40px">
+    <div class = "form-group">
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="nume">Name:</label>
+        </div>
+        <div class = "col-xs-6">
+            <input class="form-control" id="nume" type = "text" placeholder = "Sare" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"/>
+        </div>
+
+        <div class = "col-xs-2"></div>
+    </div>
+
+    <div class = "form-group">
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="quantity" >Quantity:</label>
+        </div>
+        <div class = "col-xs-6">
+            <input class="form-control" id="quantity" placeholder = "12" type = "number" th:field="*{quantity}"/>
+        </div>
+        <div class = "col-xs-2"></div>
+    </div>
+
+    <div class = "form-group">
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="quantityType">Quantity Type:</label>
+        </div>
+        <div class = "col-xs-6">
+            <input class="form-control" id="quantityType" type = "text" placeholder = "kg" th:field="*{quantityType}"/>
+        </div>
+        <div class = "col-xs-2"></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-success">
+                Create
+            </button>
+        </div>
+    </div>
+
+</form>
+</body>
+</html>
