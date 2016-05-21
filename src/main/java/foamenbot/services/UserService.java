@@ -8,6 +8,7 @@ import java.util.List;
 public interface UserService {
 
     List<User> findAll();
+    User findById(int id);
     List<User> findByRole(String role);
     List<User> findByContactName(String contactName);
     List<User> findByContactNameContaining(String contactName);

@@ -11,4 +11,5 @@ public interface OrderRepository extends CrudRepository<Order,Long> {
 
     List<Order> findByStatus(String status);
     List<Order> findByDate(String date);
+    Order findById(int id);
 }

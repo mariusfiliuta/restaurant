@@ -3,6 +3,7 @@ package foamenbot.model;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -12,10 +13,10 @@ public class Product {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = false, nullable = false)
     private String productName;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private double price;
 
     @Column(name = "description")
@@ -24,9 +25,23 @@ public class Product {
     @Column(name = "in_stock")
     private boolean in_stock;
 
+    @Column(name = "url_to_image")
+    private String urlTOImage;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductIngredient> ingredientList;
+
+    public List<ProductIngredient> getIngredientList() {
+        return ingredientList;
+    }
+
+    public void setIngredientList(List<ProductIngredient> ingredientList) {
+        this.ingredientList = ingredientList;
+    }
 
     public Product(){}
 
@@ -76,5 +91,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getUrlTOImage() {
+        return urlTOImage;
+    }
+
+    public void setUrlTOImage(String urlTOImage) {
+        this.urlTOImage = urlTOImage;
     }
 }

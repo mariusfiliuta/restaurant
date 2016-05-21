@@ -21,6 +21,8 @@ public class OrderProduct {
     @Column(name = "quantity")
     private long quantity;
 
+    public OrderProduct() {}
+
     public Product getProduct() {
         return product;
     }

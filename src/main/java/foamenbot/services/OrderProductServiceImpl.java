@@ -21,5 +21,6 @@ public class OrderProductServiceImpl implements OrderProductService{
     public void delete(Set<OrderProduct> orderProducts){ orderProductRepository.delete(orderProducts);}
     @Override
     public void delete(OrderProduct orderProduct){ orderProductRepository.delete(orderProduct);}
-
+    @Override
+    public OrderProduct findById(int id){ return orderProductRepository.findById(id);}
 }
