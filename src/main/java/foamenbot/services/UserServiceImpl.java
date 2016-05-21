@@ -25,9 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByContactNameContaining(String contactName){ return userRepository.findByContactNameContaining(contactName);}
     @Override
-    public User findByUserNameAndPassword(String userName, String password) {
-        return userRepository.findByUserNameAndPassword(userName, password);
-    }
+    public User findByUserNameAndPassword(String userName, String password) { return userRepository.findByUserNameAndPassword(userName, password);}
     @Override
     public void save(User user) {
         userRepository.save(user);
@@ -36,4 +34,6 @@ public class UserServiceImpl implements UserService {
     public List<User> findByUserName(String userName) {
         return userRepository.findByUserName(userName);
     }
+    @Override
+    public User findById(int id){ return userRepository.findById(id);}
 }

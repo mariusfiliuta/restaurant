@@ -24,6 +24,7 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<OrderProduct> orderProduct;
 
+    public Order() {}
     public long getId() {
         return id;
     }
