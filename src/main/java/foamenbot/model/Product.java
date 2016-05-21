@@ -22,8 +22,8 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "in_stock")
-    private boolean in_stock;
+    @Column(name = "in_stock", length = 1)
+    private String in_stock;
 
     @Column(name = "url_to_image")
     private String urlTOImage;
@@ -77,11 +77,11 @@ public class Product {
         this.description = description;
     }
 
-    public boolean isIn_stock() {
+    public String getIn_stock() {
         return in_stock;
     }
 
-    public void setIn_stock(boolean in_stock) {
+    public void setIn_stock(String in_stock) {
         this.in_stock = in_stock;
     }
 
