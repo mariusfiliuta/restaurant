@@ -1,9 +1,11 @@
 package foamenbot.main;
 
+import foamenbot.services.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -24,6 +26,26 @@ public class App extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter{
 
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
+    }
+
+    @Bean
+    public CategoryService getCategoryService() {
+        return new CategoryServiceImpl();
+    }
+
+    @Bean
+    public OrderProductService getOrderProductService() {
+        return new OrderProductServiceImpl();
+    }
+
+    @Bean
+    public ProductService getProductService() {
+        return new ProductServiceImpl();
+    }
+
+    @Bean
+    public UserService getUserService() {
+        return new UserServiceImpl();
     }
 
 }
