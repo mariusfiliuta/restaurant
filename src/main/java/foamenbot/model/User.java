@@ -27,6 +27,14 @@ public class User {
 
     public User() {}; // jpa
 
+
+    public User(String userName, String password, String role, String contactName) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.contactName = contactName;
+    }
+
     public long getId() {
         return id;
     }
