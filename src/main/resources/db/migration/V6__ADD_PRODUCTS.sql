@@ -15,3 +15,9 @@ INSERT INTO `products` (`id`,`name`,`price`,`description`,`in_stock`,`category_i
 INSERT INTO `products` (`id`,`name`,`price`,`description`,`in_stock`,`category_id`,`url_to_image`) VALUES (9,'Timisoreana',4,'Timisoreana','N',2,'http://www.carrefour-online.ro/-/media/Images/Products/0/3/7/N1_5942016300260.png?w=460&h=460&q=90&bc=white');
 INSERT INTO `products` (`id`,`name`,`price`,`description`,`in_stock`,`category_id`,`url_to_image`) VALUES (10,'Ciocolata calda',6,'Calda ciocolata','N',2,'http://www.bizcafeshop.ro/media/catalog/product/cache/1/thumbnail/5e06319eda06f020e43594a9c230972d/h/o/hot-chocolate.jpg');
 INSERT INTO `products` (`id`,`name`,`price`,`description`,`in_stock`,`category_id`,`url_to_image`) VALUES (11,'Alune',7,'-','N',3,'http://archive.boston.com/lifestyle/health/blog/nutrition/peanuts.jpg');
+
+ALTER TABLE `foame`.`orders`
+CHANGE COLUMN `date` `date` VARCHAR(120) NULL DEFAULT NULL COMMENT '' ;
+
+ALTER TABLE `foame`.`orders`
+ADD COLUMN `name` VARCHAR(45) NULL COMMENT '' AFTER `user_id`;

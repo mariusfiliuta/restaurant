@@ -5,18 +5,21 @@ import java.sql.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "status")
     private String status;
 
     @Column(name = "date")
-    private Date date;
+    private String date;
 
     @Column(name = "total_price")
     private double totalPrice;
@@ -25,10 +28,11 @@ public class Order {
     private Set<OrderProduct> orderProduct;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     public Order() {}
+
     public long getId() {
         return id;
     }
@@ -37,11 +41,19 @@ public class Order {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

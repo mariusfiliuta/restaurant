@@ -1,6 +1,8 @@
 package foamenbot.services;
 
+import foamenbot.model.Order;
 import foamenbot.model.OrderProduct;
+import foamenbot.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import foamenbot.repositories.OrderProductRepository;
@@ -23,4 +25,9 @@ public class OrderProductServiceImpl implements OrderProductService{
     public void delete(OrderProduct orderProduct){ orderProductRepository.delete(orderProduct);}
     @Override
     public OrderProduct findById(long id){ return orderProductRepository.findById(id);}
+
+    @Override
+    public OrderProduct findByProductAndOrder(Product product, Order order) {
+        return orderProductRepository.findByProductAndOrder(product, order);
+    }
 }

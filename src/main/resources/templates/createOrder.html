@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create Order</title>
+        <th:block th:include="common/meta :: common-meta"/>
+        <th:block th:include="common/assets :: common-styles"/>
+        <link rel="stylesheet" href="/static/css/home.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <th:block th:include="common/navbar :: common-navbar"/>
+
+        <form class="form-horizontal" th:action="@{/addOrder}" th:object="${order}" method="post" style="margin-top:40px">
+            <div class="form-group">
+                <div class = "col-xs-4 text-right">
+                    <label class="control-label" for="nume">Name:</label>
+                </div>
+                <div class = "col-xs-6">
+                    <input class="form-control" id="nume" type = "text" placeholder = "Masa 1" th:field="*{name}"/>
+                </div>
+                <div class="col-md-12 text-center" style="margin-top:20px">
+                    <button class="btn btn-success">
+                        Create new order
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <div class = "panel panel-default">
+            <div class="panel-heading">All orders</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="order : ${orders}">
+                        <td th:text="${order.name}">Name</td>
+                        <td th:text="${order.status}">Status</td>
+                        <td th:text="${order.date}">Date</td>
+                        <td th:text="${order.totalPrice}">Total Price</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+</html>

@@ -3,6 +3,7 @@ package foamenbot.model;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -27,7 +28,7 @@ public class User {
     private String contactName;
 
     @OneToMany(mappedBy = "user")
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 
     public User() {}; // jpa
 

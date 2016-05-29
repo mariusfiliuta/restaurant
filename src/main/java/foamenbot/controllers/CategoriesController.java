@@ -1,12 +1,8 @@
 package foamenbot.controllers;
 
-import foamenbot.model.Category;
-import foamenbot.model.Product;
-import foamenbot.model.ProductIngredient;
-import foamenbot.model.User;
+import foamenbot.model.*;
 import foamenbot.repositories.ProductRepository;
-import foamenbot.services.ProductService;
-import foamenbot.services.UserService;
+import foamenbot.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import foamenbot.services.CategoryService;
 
 import java.util.List;
 
@@ -37,7 +32,15 @@ public class CategoriesController {
     private CategoryService categoryService;
 
     @Autowired
-    private ProductService productRepository;
+    private OrderService orderService;
+
+    @Autowired
+    private OrderProductService orderProductService;
+
+    @ModelAttribute("activeOrders")
+    private List<Order> getActiveOrders() {
+        return orderService.findByStatus("active");
+    }
 
     @ModelAttribute("categories")
     private List<Category> getContacts() {
@@ -57,4 +60,25 @@ public class CategoriesController {
         model.addAttribute("products", products);
         return "productsView";
     }
+
+    @RequestMapping(value = {"/addProduct/{productId}/{orderId}"}, method = RequestMethod.POST)
+    public String addProductToOrder(@PathVariable long productId, @PathVariable long orderId, Model model) {
+            Product product = productService.findById(productId);
+            Order order = orderService.findById(orderId);
+            if(orderProductService.findByProductAndOrder(product, order) == null) {
+                OrderProduct orderProduct = new OrderProduct();
+                orderProduct.setOrder(order);
+                orderProduct.setProduct(product);
+                orderProduct.setQuantity(1);
+                orderProductService.save(orderProduct);
+                return "redirect:/categories";
+            }
+            else {
+                OrderProduct orderProduct = orderProductService.findByProductAndOrder(product, order);
+                orderProduct.setQuantity(orderProduct.getQuantity() + 1);
+                orderProductService.save(orderProduct);
+                return "redirect:/categories";
+            }
+    }
+
 }
