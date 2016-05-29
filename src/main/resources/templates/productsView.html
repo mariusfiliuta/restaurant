@@ -16,13 +16,14 @@
                     Categorii mancare
                 </h1>
             </div>
-            <div class="col-md-6" th:each = "product : ${products}">
+            <div class="col-md-4" th:each = "product : ${products}">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 th:text = "${product.productName}"><i class="fa fa-fw fa-check"></i>Product name</h4>
                     </div>
                     <div class="panel-body">
                         <p th:text = "${product.description}">Product Description</p>
+                        <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
                     </div>
                 </div>
             </div>

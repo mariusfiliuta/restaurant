@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Home</title>
-    <th:block th:include="common/meta :: common-meta" />
-    <th:block th:include="common/assets :: common-styles" />
-    <link rel="stylesheet" href="/static/css/home.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
-</head>
-<body>
-<th:block th:include="common/navbar :: common-navbar"/>
+    <head>
+        <title>Home</title>
+        <th:block th:include="common/meta :: common-meta" />
+        <th:block th:include="common/assets :: common-styles" />
+        <link rel="stylesheet" href="/static/css/home.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <th:block th:include="common/navbar :: common-navbar"/>
 
-<div class="container">
-    <div class="col-lg-12">
-        <h1 class="page-header" th:text="${category.categoryName}">
-            Categorii mancare
-        </h1>
-    </div>
-    <div class="col-md-6" th:each = "product : ${products}">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 th:text = "${product.productName}"><i class="fa fa-fw fa-check"></i>Product name</h4>
+        <div class="container">
+            <div class="col-lg-12">
+                <h1 class="page-header" th:text="${category.categoryName}">
+                    Categorii mancare
+                </h1>
             </div>
-            <div class="panel-body">
-                <p th:text = "${product.description}">Product Description</p>
+            <div class="col-md-4" th:each = "product : ${products}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 th:text = "${product.productName}"><i class="fa fa-fw fa-check"></i>Product name</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p th:text = "${product.description}">Product Description</p>
+                        <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>
