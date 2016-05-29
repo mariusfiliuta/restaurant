@@ -1,13 +1,12 @@
 package foamenbot.controllers;
 
-import foamenbot.model.Category;
-import foamenbot.model.Ingredient;
-import foamenbot.model.Product;
-import foamenbot.model.ProductIngredient;
+import foamenbot.model.*;
 import foamenbot.services.CategoryService;
 import foamenbot.services.IngredientService;
 import foamenbot.services.ProductService;
+import foamenbot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,17 +18,19 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by Mihai on 21.05.2016.
- */
-
 @Controller
-
 public class AddIngredientController {
+
+    @Autowired
+    private UserService userService;
+
+    @ModelAttribute("currentUser")
+    private User getCurrentUser() {
+        return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
+    }
+
     @Autowired
     private IngredientService ingredientService;
-
-
 
     @RequestMapping(value = {"/addIngredient"}, method = RequestMethod.GET)
     public String getAddIngredientPage(Model model) {

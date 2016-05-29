@@ -3,9 +3,12 @@ package foamenbot.controllers;
 import foamenbot.model.Category;
 import foamenbot.model.Product;
 import foamenbot.model.ProductIngredient;
+import foamenbot.model.User;
 import foamenbot.repositories.ProductRepository;
 import foamenbot.services.ProductService;
+import foamenbot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,14 @@ import java.util.List;
 
 @Controller
 public class CategoriesController {
+
+    @Autowired
+    private UserService userService;
+
+    @ModelAttribute("currentUser")
+    private User getCurrentUser() {
+        return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
+    }
 
     @Autowired
     private CategoryService categoryService;

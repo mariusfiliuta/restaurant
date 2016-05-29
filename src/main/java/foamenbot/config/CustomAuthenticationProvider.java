@@ -31,12 +31,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
         List<User> users = userService.findByUserName(name);
-        if (users.get(0) != null && BCRYPT.matches(password, users.get(0).getPassword())) {
-            List<GrantedAuthority> grantedAuths = new ArrayList<>();
-            grantedAuths.add(new SimpleGrantedAuthority(users.get(0).getRole()));
-            return new UsernamePasswordAuthenticationToken(name, password, grantedAuths);
-        } else {
-            return null;
+        try {
+            if (users.get(0) != null && BCRYPT.matches(password, users.get(0).getPassword())) {
+                List<GrantedAuthority> grantedAuths = new ArrayList<>();
+                grantedAuths.add(new SimpleGrantedAuthority(users.get(0).getRole()));
+                return new UsernamePasswordAuthenticationToken(name, password, grantedAuths);
+            } else {
+                throw new RuntimeException("User '" + name + "' not found.");
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException("User '" + name + "' not found.");
         }
     }
 
