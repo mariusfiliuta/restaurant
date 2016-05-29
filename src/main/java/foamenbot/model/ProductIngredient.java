@@ -26,6 +26,17 @@ public class ProductIngredient {
     @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    @Transient
+    private String productName;
+
     public ProductIngredient(){}
 
     public long getId() {

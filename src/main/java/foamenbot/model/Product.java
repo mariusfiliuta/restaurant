@@ -3,6 +3,7 @@ package foamenbot.model;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,7 +34,7 @@ public class Product {
     private Category category;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductIngredient> ingredientList;
+    private List<ProductIngredient> ingredientList = new ArrayList<ProductIngredient>();
 
     public List<ProductIngredient> getIngredientList() {
         return ingredientList;

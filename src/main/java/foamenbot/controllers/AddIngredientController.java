@@ -36,13 +36,16 @@ public class AddIngredientController {
         Ingredient ingredient = new Ingredient();
         model.addAttribute("ingredient", ingredient);
         return "addIngredient";
-    }
+    }d
 
     @RequestMapping(value = {"/addIngredient"}, method = RequestMethod.POST)
     public String addIngredient(Model model, @Valid Ingredient ingredient, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             model.addAttribute("ingredient", ingredient);
             return "addIngredient";
+        }
+        if(ingredientService.findByName(ingredient.getName())!= null){
+            ingredient.setId(ingredientService.findByName(ingredient.getName()).getId());
         }
         ingredientService.save(ingredient);
         return "redirect:/addIngredient";
