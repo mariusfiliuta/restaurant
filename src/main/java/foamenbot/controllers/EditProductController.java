@@ -1,15 +1,14 @@
 package foamenbot.controllers;
 
 
-import foamenbot.model.Category;
-import foamenbot.model.Ingredient;
-import foamenbot.model.Product;
-import foamenbot.model.ProductIngredient;
+import foamenbot.model.*;
 import foamenbot.services.CategoryService;
 import foamenbot.services.IngredientService;
 import foamenbot.services.ProductIngredientService;
 import foamenbot.services.ProductService;
+import foamenbot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,6 +21,14 @@ import java.util.List;
 
 @Controller
 public class EditProductController {
+
+    @Autowired
+    private UserService userService;
+
+    @ModelAttribute("currentUser")
+    private User getCurrentUser() {
+        return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
+    }
 
     @Autowired
     private ProductService productService;

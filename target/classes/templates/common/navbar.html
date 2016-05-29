@@ -17,17 +17,20 @@
                     <li>
                         <a href="/categories">Menu</a>
                     </li>
-                    <li>
+                    <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addProduct">Add Product</a>
                     </li>
-                    <li>
+                    <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addIngredient">Add Ingredient To Stock</a>
                     </li>
-                    <li>
+                    <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addProduct">Add Ingredients To Product</a>
                     </li>
                     <li>
                         <a href="/addProduct">Create Order</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
                     </li>
                 </ul>
             </div>

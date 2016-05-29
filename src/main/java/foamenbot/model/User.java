@@ -3,6 +3,7 @@ package foamenbot.model;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -24,6 +25,9 @@ public class User {
 
     @Column (name = "name", unique = true)
     private String contactName;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Order> orders;
 
     public User() {}; // jpa
 
@@ -73,4 +77,11 @@ public class User {
 
     public void setContactName(String contactName) { this.contactName = contactName; }
 
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }

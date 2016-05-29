@@ -12,18 +12,18 @@
 
         <div class="container">
             <div class="col-lg-12">
-                <h1 class="page-header">
+                <h1 class="page-header" th:text="${category.categoryName}">
                     Categorii mancare
                 </h1>
             </div>
-            <div class="col-md-6" th:each = "category : ${categories}">
+            <div class="col-md-4" th:each = "product : ${products}">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 th:text = "${category.categoryName}"><i class="fa fa-fw fa-check"></i>Category name</h4>
+                        <h4 th:text = "${product.productName}"><i class="fa fa-fw fa-check"></i>Product name</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a th:href="'/categories/' + ${category.id}" class="btn btn-default" th:text = "'Go to ' + ${category.categoryName}">Learn More</a>
+                        <p th:text = "${product.description}">Product Description</p>
+                        <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
                     </div>
                 </div>
             </div>
