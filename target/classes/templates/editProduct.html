@@ -12,7 +12,7 @@
     <div class="col-xs-12">
         <div class="col-xs-6">
             <h1 class="page-header text-center">Edit product</h1>
-            <form class="form-horizontal" th:object="${product}" method="post" style="margin-top:40px">
+            <form class="form-horizontal" th:action= "@{'/edit/' + ${product.id} }"  th:object="${product}" method="post" style="margin-top:40px">
                 <div class="form-group">
                     <div class="col-xs-4 text-right">
                         <label class="control-label" for="nume">Name:</label>
@@ -79,7 +79,7 @@
             </form>
         </div>
         <div class="col-xs-6">
-            <form class="form-horizontal" th:object="${ingredient}" method="post" style="margin-top:40px" >
+            <form class="form-horizontal" th:action="@{/editingredients/} + ${product.id}" th:object="${ingredient}" method="post" style="margin-top:40px" >
 
                 <h1 class="page-header text-center">Ingredients</h1>
                 <div class = "panel panel-default">
@@ -94,7 +94,7 @@
                         <tbody>
                         <tr th:each="productIngredient : ${productIngredients}">
                             <td th:text="${productIngredient.ingredient.name}" >Name</td>
-                            <td th:text="${productIngredient.ingredient.quantity} + ${productIngredient.ingredient.quantityType}">Quantity</td>
+                            <td th:text="${productIngredient.quantity} + ${productIngredient.quantityType}">Quantity</td>
                         </tr>
                         </tbody>
                     </table>
@@ -107,7 +107,7 @@
                         <label class="control-label" for="name">Nume:</label>
                     </div>
                     <div class="col-xs-6">
-                        <input class="form-control" id="name" placeholder="salt" type="text"/>
+                        <input class="form-control" id="name" placeholder="salt" th:field="*{productName}" type="text"/>
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
@@ -116,7 +116,7 @@
                         <label class="control-label" for="quantity">Quantity:</label>
                     </div>
                     <div class="col-xs-6">
-                        <input class="form-control" id="quantity" placeholder="12" type="text"/>
+                        <input class="form-control" id="quantity" placeholder="12" th:field="*{quantity}" type="text"/>
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
@@ -125,15 +125,15 @@
                         <label class="control-label" for="quantityType">Type:</label>
                     </div>
                     <div class="col-xs-6">
-                        <input class="form-control" id="quantityType" placeholder="kg" type="text"/>
+                        <input class="form-control" id="quantityType" placeholder="kg"  th:field="*{quantityType}" type="text"/>
                     </div>
                     <div class="col-xs-2"></div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12 text-center">
-                        <button class="btn btn-success">
-                            Add Ingredient
-                        </button>
+                            <button type = "submit" class="btn btn-success">
+                                Add Ingredient
+                            </button>
                     </div>
                 </div>
             </form>
