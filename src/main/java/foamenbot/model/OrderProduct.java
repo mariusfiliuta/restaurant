@@ -3,7 +3,7 @@ package foamenbot.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "orderproduct")
 public class OrderProduct {
 
     @Id
