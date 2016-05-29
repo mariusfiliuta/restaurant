@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class HomeController {
 
-    @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
     public String getHomePage() {
         return "home";
     }
