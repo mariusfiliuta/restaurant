@@ -37,7 +37,7 @@ public class AddIngredientController {
         Ingredient ingredient = new Ingredient();
         model.addAttribute("ingredient", ingredient);
         return "addIngredient";
-    }d
+    }
 
     @RequestMapping(value = {"/addIngredient"}, method = RequestMethod.POST)
     public String addIngredient(Model model, @Valid Ingredient ingredient, BindingResult bindingResult){
