@@ -20,6 +20,16 @@ public class MeseServiceImpl implements MeseService{
     }
 
     @Override
+    public Set<Mese> findByStatus(String status) {
+        return meseRepository.findByStatus(status);
+    }
+
+    @Override
+    public Mese findById(long id) {
+        return meseRepository.findById(id);
+    }
+
+    @Override
     public void save(Mese masa) {
         meseRepository.save(masa);
     }

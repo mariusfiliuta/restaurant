@@ -1,8 +1,10 @@
 package foamenbot.services;
 
 import foamenbot.model.Category;
+import foamenbot.model.Ingredient;
 import foamenbot.model.Product;
 import foamenbot.model.ProductIngredient;
+import foamenbot.repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import foamenbot.repositories.ProductRepository;
@@ -14,6 +16,8 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private IngredientRepository ingredientRepository;
 
     @Override
     public List<Product> findAll(){ return productRepository.findAll();}
@@ -48,7 +52,23 @@ public class ProductServiceImpl implements ProductService{
         }
 
         product.setIn_stock((isIn? "Y":"N"));
+        productRepository.save(product);
         return isIn;
+    }
+
+    @Override
+    public void deleteFromStock(Product product) {
+        List<ProductIngredient> productIngredients = product.getIngredientList();
+        for(ProductIngredient productIngredient:productIngredients) {
+            Ingredient ingredient = productIngredient.getIngredient();
+            if(productIngredient.getQuantityType().equals(ingredient.getQuantityType())){
+                ingredient.setQuantity(ingredient.getQuantity()-productIngredient.getQuantity());
+            }
+            else{
+                ingredient.setQuantity((ingredient.getQuantity()*1000 - productIngredient.getQuantity())/1000);
+            }
+            ingredientRepository.save(ingredient);
+        }
     }
 
     @Override

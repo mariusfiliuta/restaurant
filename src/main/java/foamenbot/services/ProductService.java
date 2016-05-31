@@ -13,4 +13,5 @@ public interface ProductService {
     Product findById(long id);
     List<Product> findByCategory(Category category);
     boolean isInStock(Product product);
+    void deleteFromStock(Product product);
 }
