@@ -24,6 +24,13 @@ public class Mese {
     @Column(name = "nr_seats")
     private int nrSeats;
 
+    @Column(name = "status")
+    private String status;
+
+    @OneToMany(mappedBy = "masa")
+    private Set<Reservation> reservations;
+
+
     public Mese(){}
 
     public long getId() {
@@ -48,5 +55,21 @@ public class Mese {
 
     public void setNrSeats(int nrSeats) {
         this.nrSeats = nrSeats;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

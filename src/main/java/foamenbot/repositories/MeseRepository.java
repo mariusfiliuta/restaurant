@@ -9,4 +9,6 @@ import java.util.Set;
 @Repository
 public interface MeseRepository extends CrudRepository<Mese, Long>{
     Set<Mese> findAll();
+    Set<Mese> findByStatus(String status);
+    Mese findById(long id);
 }
