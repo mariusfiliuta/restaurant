@@ -27,10 +27,22 @@ public class User {
     @Column (name = "name", unique = true)
     private String contactName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(targetEntity = Order.class, mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
 
+    @OneToMany(targetEntity = History.class, mappedBy = "user")
+    private Set<History> orderHistory = new HashSet<>();
+
     public User() {}; // jpa
+
+
+    public Set<History> getOrderHistory() {
+        return orderHistory;
+    }
+
+    public void setOrderHistory(Set<History> orderHistory) {
+        this.orderHistory = orderHistory;
+    }
 
 
     public User(String userName, String password, String role, String contactName) {

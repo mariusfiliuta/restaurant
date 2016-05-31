@@ -1,0 +1,12 @@
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('nestea', '15', 'buc');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('timisoreana', '22', 'buc');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('alune', '690', 'g');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('ciocolata calda', '12', 'buc');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('coca-cola', '69', 'buc');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('paste carbonara', '3', 'kg');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('sos rosii', '900', 'g');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('mozarella', '6', 'kg');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('ciuperci', '5', 'kg');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('busuioc', '100', 'g');
+INSERT INTO `foame`.`stocks` (`name`, `quantity`, `quantity_type`) VALUES ('ardei gras', '5', 'kg');
+UPDATE `foame`.`stocks` SET `quantity`='4' WHERE `id`='3';
