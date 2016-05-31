@@ -27,22 +27,50 @@
         </form>
 
         <div class = "panel panel-default">
-            <div class="panel-heading">All orders</div>
+            <div class="panel-heading">My orders</div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Table</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${myOrders}">
+                    <td th:text="${order.name}">Table</td>
+                    <td th:text="${order.status}">Status</td>
+                    <td th:text="${order.date}">Date</td>
+                    <td th:text="${order.totalPrice}">Total Price</td>
+                    <td><a class="btn btn-default" th:href="@{/order/details/} + ${order.id}">See Order</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "panel panel-default">
+            <div class="panel-heading">Other orders</div>
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Table</th>
                         <th>Status</th>
                         <th>Date</th>
                         <th>Total Price</th>
+                        <th>Order Creator</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orders}">
-                        <td th:text="${order.name}">Name</td>
+                        <td th:text="${order.name}">Table</td>
                         <td th:text="${order.status}">Status</td>
                         <td th:text="${order.date}">Date</td>
                         <td th:text="${order.totalPrice}">Total Price</td>
+                        <td th:text="${order.user.userName}">Order Creator</td>
+                        <td><a class="btn btn-default" th:href="@{/order/details/} + ${order.id}">See Order</a></td>
                     </tr>
                 </tbody>
             </table>

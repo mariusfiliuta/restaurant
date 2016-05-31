@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class CategoriesController {
@@ -38,7 +39,7 @@ public class CategoriesController {
     private OrderProductService orderProductService;
 
     @ModelAttribute("activeOrders")
-    private List<Order> getActiveOrders() {
+    private Set<Order> getActiveOrders() {
         return orderService.findByStatus("active");
     }
 
@@ -61,7 +62,7 @@ public class CategoriesController {
         return "productsView";
     }
 
-    @RequestMapping(value = {"/addProduct/{productId}/{orderId}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/addProduct/{productId}/{orderId}"}, method = RequestMethod.POST, params="action=add")
     public String addProductToOrder(@PathVariable long productId, @PathVariable long orderId, Model model) {
             Product product = productService.findById(productId);
             Order order = orderService.findById(orderId);
@@ -70,15 +71,24 @@ public class CategoriesController {
                 orderProduct.setOrder(order);
                 orderProduct.setProduct(product);
                 orderProduct.setQuantity(1);
+                order.setTotalPrice(order.getTotalPrice()+product.getPrice());
                 orderProductService.save(orderProduct);
+                orderService.save(order);
                 return "redirect:/categories";
             }
             else {
                 OrderProduct orderProduct = orderProductService.findByProductAndOrder(product, order);
                 orderProduct.setQuantity(orderProduct.getQuantity() + 1);
+                order.setTotalPrice(order.getTotalPrice()+product.getPrice());
+                orderProductService.save(orderProduct);
                 orderProductService.save(orderProduct);
                 return "redirect:/categories";
             }
+    }
+
+    @RequestMapping(value = {"addProduct/{productId}/{orderId}"}, method = RequestMethod.POST, params="action=edit")
+    public String getEditProductPage(@PathVariable long productId, Model model) {
+        return "redirect:/edit/" + productId;
     }
 
 }

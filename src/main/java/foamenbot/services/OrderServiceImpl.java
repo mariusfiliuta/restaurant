@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -19,7 +20,9 @@ public class OrderServiceImpl implements  OrderService{
     @Override
     public void delete(Order order){ orderRepository.delete(order);}
     @Override
-    public List<Order> findByStatus(String status){ return orderRepository.findByStatus(status);}
+    public Set<Order> findByStatus(String status){ return orderRepository.findByStatus(status);}
     @Override
     public Order findById(long id){ return orderRepository.findById(id);}
+    @Override
+    public Set<Order> findAll(){ return orderRepository.findAll(); }
 }

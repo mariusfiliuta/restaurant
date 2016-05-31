@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Product</title>
+    <th:block th:include="common/meta :: common-meta"/>
+    <th:block th:include="common/assets :: common-styles"/>
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+    <th:block th:include="common/navbar :: common-navbar"/>
+    <div class = "panel panel-default">
+        <div class="panel-heading">Order info</div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Table</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Total Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${order.name}">Table</td>
+                <td th:text="${order.status}">Status</td>
+                <td th:text="${order.date}">Date</td>
+                <td th:text="${order.totalPrice}">Total Price</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class = "panel panel-default">
+        <div class="panel-heading">Products in order</div>
+        <table class="table">
+            <thead>
+            <tr >
+                <th>Product name</th>
+                <th>Number</th>
+                <th>Price/buc</th>
+                <th>Total Price</th>
+                <th th:if="${currentUser.role} == 'ROLE_ADMIN'"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="orderProduct : ${orderProducts}">
+                <td th:text="${orderProduct.product.productName}">Product Name</td>
+                <td th:text="${orderProduct.quantity}">Status</td>
+                <td th:text="${orderProduct.product.price}">Date</td>
+                <td th:text="${orderProduct.product.price} * ${orderProduct.quantity}">Total Price</td>
+                <td th:if="${currentUser.role} == 'ROLE_ADMIN'">
+                    <form class="form-horizontal" th:action="@{'/deleteOrderProduct/' + ${order.id} + '/' + ${orderProduct.id} }" th:object="${orderProduct}" method="post" name="action" value="delete">
+                        <button type = "submit"  class="btn btn-success">
+                            Delete
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style= "text-align: center" th:if="${currentUser} == ${order.user}">
+        <form class="form-horizontal" th:action="@{/finishOrder}" th:object="${order}" method="post" name="action" value="delete" style="margin-top:40px">
+            <button type = "submit" class="btn btn-success">
+                Finish order
+            </button>
+        </form>
+    </div>
+</body>
+</html>

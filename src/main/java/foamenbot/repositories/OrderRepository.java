@@ -5,11 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface OrderRepository extends CrudRepository<Order,Long> {
 
-    List<Order> findByStatus(String status);
-    List<Order> findByDate(String date);
+    Set<Order> findByStatus(String status);
+    Set<Order> findByDate(String date);
+    Set<Order> findAll();
     Order findById(long id);
 }
