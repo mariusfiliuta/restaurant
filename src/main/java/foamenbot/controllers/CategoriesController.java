@@ -57,6 +57,8 @@ public class CategoriesController {
     public String getProductsForEachCategory(@PathVariable long id, Model model) {
         Category currentCategory = categoryService.findById(id);
         List<Product> products = productService.findByCategory(currentCategory);
+        for(Product product : products)
+            productService.isInStock(product);
         model.addAttribute("category", currentCategory);
         model.addAttribute("products", products);
         return "productsView";

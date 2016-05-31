@@ -59,8 +59,8 @@
             </tbody>
         </table>
     </div>
-    <div style= "text-align: center" th:if="${currentUser} == ${order.user}">
-        <form class="form-horizontal" th:action="@{/finishOrder}" th:object="${order}" method="post" name="action" value="delete" style="margin-top:40px">
+    <div style= "text-align: center" th:if="${currentUser} == ${order.user} or ${currentUser.role} == 'ROLE_ADMIN'">
+        <form class="form-horizontal" th:action="@{'/finishOrder/' + ${order.id}}" th:object="${order}" method="post" name="action" value="delete" style="margin-top:40px">
             <button type = "submit" class="btn btn-success">
                 Finish order
             </button>

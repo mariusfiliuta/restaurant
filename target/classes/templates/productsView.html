@@ -26,11 +26,13 @@
                         <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
                         <p th:text="'Pret: ' + ${product.price} + ' lei'">Pret</p>
                         <form id = "form" th:action="@{'/addProduct/' + ${product.id} + '/1' }" th:method="post">
-                            <div class="col-xs-12">
-                                <div class="col-xs-4">
-                                    <p>Adauga la comanda:</p>
+                            <div class="col-xs-12" style="height:50px">
+                                <p th:if="${product.in_stock} == 'N' " style="color:red;text-align: center">Produsul nu se afla in stock</p>
+                                <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} == 0"  style="color:#006cff;text-align: center">Nu exista nici o comanda.</p>
+                                <div class="col-xs-4" >
+                                    <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0" >Adauga la comanda:</p>
                                 </div>
-                                <div class="col-xs-8">
+                                <div class="col-xs-8" th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0 " >
                                     <select class="form-control" id="myselect">
                                         <option th:each="order : ${activeOrders}" th:text="${order.name}" th:value = "${order.id}">
                                         </option>
@@ -39,7 +41,7 @@
                             </div>
                             <div class="col-md-12 text-center" style="margin-top:20px">
                                 <a>
-                                    <button class="btn btn-success" type="submit" name="action" value="add">Add</button>
+                                    <button th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0 "  class="btn btn-success" type="submit" name="action" value="add">Add</button>
                                     <button class="btn btn-success" type="submit" name="action" value="edit">Edit</button>
                                 </a>
                             </div>

@@ -1,9 +1,7 @@
 package foamenbot.controllers;
 
-import foamenbot.model.Ingredient;
-import foamenbot.model.Order;
-import foamenbot.model.OrderProduct;
-import foamenbot.model.User;
+import foamenbot.model.*;
+import foamenbot.services.MeseService;
 import foamenbot.services.OrderService;
 import foamenbot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +28,18 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MeseService meseService;
+
     @ModelAttribute("currentUser")
     private User getCurrentUser() {
         return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
     }
-
+    @ModelAttribute("mese")
+    private Set<Mese> getAllTables(){
+        Set<Mese> allTables = meseService.findAll();
+        return allTables;
+    }
     @ModelAttribute("orders")
     private Set<Order> getAllOrders() {
         Set<Order> allOrders = orderService.findAll();

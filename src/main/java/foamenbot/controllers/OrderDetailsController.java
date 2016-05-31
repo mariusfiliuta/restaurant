@@ -54,8 +54,9 @@ public class OrderDetailsController {
         return "redirect:/order/details/" + id;
     }
 
-    @RequestMapping(value = {"/finishOrder"}, method = RequestMethod.POST)
-    public String finishOrder(Order order, Model model){
+    @RequestMapping(value = {"/finishOrder/{orderId}"}, method = RequestMethod.POST)
+    public String finishOrder(@PathVariable long orderId, Model model){
+
         return "redirect:/addOrder";
     }
 }

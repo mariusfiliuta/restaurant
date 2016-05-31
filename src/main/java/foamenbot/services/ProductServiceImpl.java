@@ -46,8 +46,8 @@ public class ProductServiceImpl implements ProductService{
                 break;
             }
         }
-
         product.setIn_stock((isIn? "Y":"N"));
+        productRepository.save(product);
         return isIn;
     }
 
