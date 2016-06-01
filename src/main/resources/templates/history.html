@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <th:block th:include="common/meta :: common-meta" />
+    <th:block th:include="common/assets :: common-styles" />
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+    <th:block th:include="common/navbar :: common-navbar"/>
+    <div class = "panel panel-default">
+        <div class="panel-heading" style="margin-top: 40px">History</div>
+        <table class="table">
+            <thead>
+            <tr >
+                <th>ID</th>
+                <th>Table</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Price</th>
+                <th>Order creator</th>
+                <th th:if="${currentUser.role} == 'ROLE_ADMIN'"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="orderHistory : ${history}">
+                <td th:text="${orderHistory.id}">ID</td>
+                <td th:text="${orderHistory.tableName}">Table Name</td>
+                <td th:text="${orderHistory.startDate}">Start Date</td>
+                <td th:text="${orderHistory.endDate}">End Date</td>
+                <td th:text="${orderHistory.totalPrice}">Total Price</td>
+                <td th:text="${orderHistory.user.userName}">Order Creator</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

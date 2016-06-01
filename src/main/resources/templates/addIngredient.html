@@ -15,7 +15,7 @@
             <label class="control-label" for="nume">Name:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="nume" type = "text" placeholder = "Sare" th:field="*{name}"/>
+            <input class="form-control" id="nume" type = "text" placeholder = "Sare" th:field="*{name}" required="required"/>
             <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"/>
         </div>
 
@@ -27,7 +27,7 @@
             <label class="control-label" for="quantity" >Quantity:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="quantity" placeholder = "12" type = "number" th:field="*{quantity}"/>
+            <input class="form-control" id="quantity" placeholder = "12" type = "number" th:field="*{quantity}" required="required"/>
         </div>
         <div class = "col-xs-2"></div>
     </div>
@@ -37,7 +37,7 @@
             <label class="control-label" for="quantityType">Quantity Type:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="quantityType" type = "text" placeholder = "kg" th:field="*{quantityType}"/>
+            <input class="form-control" id="quantityType" type = "text" placeholder = "kg" th:field="*{quantityType}" required="required"/>
         </div>
         <div class = "col-xs-2"></div>
     </div>

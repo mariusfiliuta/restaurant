@@ -16,7 +16,6 @@
                     <label class="control-label" for="nume">Name:</label>
                 </div>
                 <div class = "col-xs-6">
-                    <input class="form-control" id="nume" type = "text" placeholder = "Masa 1" th:field="*{name}"/>
                     <select class="form-control" th:field="*{name}">
                         <option th:each="masa: ${mese}" th:text="${masa.name}"
                                 th:value="${masa.name}"></option>
