@@ -13,5 +13,6 @@ public interface OrderRepository extends CrudRepository<Order,Long> {
     Set<Order> findByStatus(String status);
     Set<Order> findByDate(String date);
     Set<Order> findAll();
+    Order findByName(String name);
     Order findById(long id);
 }

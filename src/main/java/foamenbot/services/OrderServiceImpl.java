@@ -19,6 +19,12 @@ public class OrderServiceImpl implements  OrderService{
     public void save(Order order){ orderRepository.save(order);}
     @Override
     public void delete(Order order){ orderRepository.delete(order);}
+
+    @Override
+    public Order findByName(String name) {
+        return orderRepository.findByName(name);
+    }
+
     @Override
     public Set<Order> findByStatus(String status){ return orderRepository.findByStatus(status);}
     @Override

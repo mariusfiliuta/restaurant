@@ -37,8 +37,8 @@ public class OrderController {
     }
     @ModelAttribute("mese")
     private Set<Mese> getAllTables(){
-        Set<Mese> allTables = meseService.findAll();
-        return allTables;
+        Set<Mese> freeTables = meseService.findByStatus("liber");
+        return freeTables;
     }
     @ModelAttribute("orders")
     private Set<Order> getAllOrders() {
@@ -60,6 +60,9 @@ public class OrderController {
     @RequestMapping(value = {"/addOrder"}, method = RequestMethod.POST)
     public String createOrder(Order order, Model model) {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Mese masaComenzii = meseService.findByName(order.getName());
+        masaComenzii.setStatus("ocupat");
+        meseService.save(masaComenzii);
         Calendar calendarInstance = Calendar.getInstance();
         order.setDate(df.format(calendarInstance.getTime()));
         order.setStatus("active");

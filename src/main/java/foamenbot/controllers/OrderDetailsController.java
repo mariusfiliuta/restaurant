@@ -49,7 +49,8 @@ public class OrderDetailsController {
     @RequestMapping(value = {"/deleteOrderProduct/{id}/{orderProductID}"}, method = RequestMethod.POST)
     public String deleteOrderProduct(@PathVariable long id, @PathVariable long orderProductID, Model model){
         Order myOrder = orderService.findById(id);
-        myOrder.setTotalPrice(myOrder.getTotalPrice() - orderProductService.findById(orderProductID).getProduct().getPrice());
+        myOrder.setTotalPrice(myOrder.getTotalPrice() - orderProductService.findById(orderProductID).getProduct().getPrice() * orderProductService.findById(orderProductID).getQuantity());
+
         orderProductService.delete(orderProductService.findById(orderProductID));
         return "redirect:/order/details/" + id;
     }

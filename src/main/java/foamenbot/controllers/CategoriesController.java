@@ -1,7 +1,6 @@
 package foamenbot.controllers;
 
 import foamenbot.model.*;
-import foamenbot.repositories.ProductRepository;
 import foamenbot.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -42,6 +41,11 @@ public class CategoriesController {
     private Set<Order> getActiveOrders() {
         return orderService.findByStatus("active");
     }
+    @ModelAttribute("orderName")
+    private helpObject getOrderName(){
+        helpObject orderName = new helpObject();
+        return orderName;
+    }
 
     @ModelAttribute("categories")
     private List<Category> getContacts() {
@@ -64,10 +68,10 @@ public class CategoriesController {
         return "productsView";
     }
 
-    @RequestMapping(value = {"/addProduct/{productId}/{orderId}"}, method = RequestMethod.POST, params="action=add")
-    public String addProductToOrder(@PathVariable long productId, @PathVariable long orderId, Model model) {
+    @RequestMapping(value = {"/addProduct/{productId}"}, method = RequestMethod.POST, params="action=add")
+    public String addProductToOrder(@PathVariable long productId, helpObject orderName, Model model) {
             Product product = productService.findById(productId);
-            Order order = orderService.findById(orderId);
+            Order order = orderService.findByName(orderName.getOrderName());
             if(orderProductService.findByProductAndOrder(product, order) == null) {
                 OrderProduct orderProduct = new OrderProduct();
                 orderProduct.setOrder(order);

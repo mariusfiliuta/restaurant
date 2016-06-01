@@ -25,6 +25,11 @@ public class MeseServiceImpl implements MeseService{
     }
 
     @Override
+    public Mese findByName(String name) {
+        return meseRepository.findByName(name);
+    }
+
+    @Override
     public Mese findById(long id) {
         return meseRepository.findById(id);
     }

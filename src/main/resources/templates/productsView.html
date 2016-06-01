@@ -25,7 +25,7 @@
                         <p th:text = "${product.description}">Product Description</p>
                         <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
                         <p th:text="'Pret: ' + ${product.price} + ' lei'">Pret</p>
-                        <form id = "form" th:action="@{'/addProduct/' + ${product.id} + '/1' }" th:method="post">
+                        <form th:action="@{'/addProduct/' + ${product.id} }" th:object="${orderName}" th:method="post">
                             <div class="col-xs-12" style="height:50px">
                                 <p th:if="${product.in_stock} == 'N' " style="color:red;text-align: center">Produsul nu se afla in stock</p>
                                 <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} == 0"  style="color:#006cff;text-align: center">Nu exista nici o comanda.</p>
@@ -33,8 +33,8 @@
                                     <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0" >Adauga la comanda:</p>
                                 </div>
                                 <div class="col-xs-8" th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0 " >
-                                    <select class="form-control" id="myselect">
-                                        <option th:each="order : ${activeOrders}" th:text="${order.name}" th:value = "${order.id}">
+                                    <select class="form-control" th:field="*{orderName}">
+                                        <option th:each="order : ${activeOrders}" th:text="${order.name}" th:value = "${order.name}">
                                         </option>
                                     </select>
                                 </div>
