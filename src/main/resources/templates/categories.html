@@ -10,7 +10,7 @@
     <body>
         <th:block th:include="common/navbar :: common-navbar"/>
 
-        <form class="navbar-form" role="search" th:action="@{/search}" method="post"  th:object = "${helpObject}" style="text-align:center; margin-top: 50px;">
+        <form class="navbar-form" role="search" th:action="@{/search}" method="post"  th:object = "${myHelpObject}" style="text-align:center; margin-top: 50px;">
             <div class="input-group add-on">
                 <input class="form-control" th:field = "*{orderName}" placeholder="Search" name="srch-term" id="srch-term" type="text" required="required"/>
                 <div class="input-group-btn">
