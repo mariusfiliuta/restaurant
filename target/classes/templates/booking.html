@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Order</title>
+    <th:block th:include="common/meta :: common-meta"/>
+    <th:block th:include="common/assets :: common-styles"/>
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+<th:block th:include="common/navbar :: common-navbar"/>
+
+<form class="form-horizontal" th:action="@{/createBooking}" th:object="${reservation}" method="post" style="margin-top:40px">
+    <div class="form-group">
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="nume">Name:</label>
+        </div>
+        <div class = "col-xs-6">
+            <input class="form-control" id="nume" type = "text" placeholder = "Mihai" th:field="*{name}" required="required"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"/>
+        </div>
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="date">Data:</label>
+        </div>
+        <div class = "col-xs-6">
+            <input class="form-control" id="date" type = "text" placeholder = "22/06/2016 16:30" th:field="*{startDate}" required="required"/>
+            <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="alert alert-danger"/>
+        </div>
+        <div class = "col-xs-4 text-right">
+            <label class="control-label" for="masa">Masa:</label>
+        </div>
+        <div class = "col-xs-6">
+            <select class="form-control" id = "masa" th:field="*{tableName}">
+                <option th:each="masa: ${mese}" th:text="@{${masa.name} + '(' + ${masa.nrSeats} + ' seats)' }"
+                        th:value="${masa.name}"></option>
+            </select>
+        </div>
+        <div class="col-md-12 text-center" style="margin-top:20px">
+            <button class="btn btn-success">
+                Book
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<div class = "panel panel-default">
+    <div class="panel-heading">Active bookings</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Table</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rezervare : ${reservations}">
+            <td th:text="${rezervare.masa.name}">Table</td>
+            <td th:text="${rezervare.name}">Name</td>
+            <td th:text="${rezervare.startDate}">Date</td>
+            <td>
+                <form class="form-horizontal" th:action="@{'/deleteBooking/' + ${rezervare.id}}" method="post" name="action" value="delete">
+                    <button type = "submit"  class="btn btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
