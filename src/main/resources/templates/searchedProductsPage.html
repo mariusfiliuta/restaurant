@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <th:block th:include="common/meta :: common-meta" />
+    <th:block th:include="common/assets :: common-styles" />
+    <link rel="stylesheet" href="/static/css/home.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+</head>
+<body>
+<th:block th:include="common/navbar :: common-navbar"/>
+
+<div class="container">
+    <div class="col-lg-12">
+        <h1 class="page-header" th:text="${searchedTerm}">
+            Categorii mancare
+        </h1>
+    </div>
+    <div class="col-md-4" th:each = "product : ${searchedProducts}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 th:text = "${product.productName}"><i class="fa fa-fw fa-check"></i>Product name</h4>
+            </div>
+            <div class="panel-body">
+                <p th:text = "${product.description}">Product Description</p>
+                <img th:src ="${product.urlTOImage}" style="width:300px; height: 300px"/>
+                <p th:text="'Pret: ' + ${product.price} + ' lei'">Pret</p>
+                <form th:action="@{'/addProduct/' + ${product.id} }" th:object="${orderName}" th:method="post">
+                    <div class="col-xs-12" style="height:50px">
+                        <p th:if="${product.in_stock} == 'N' " style="color:red;text-align: center">Produsul nu se afla in stock</p>
+                        <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} == 0"  style="color:#006cff;text-align: center">Nu exista nici o comanda.</p>
+                        <div class="col-xs-4" >
+                            <p th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0" >Adauga la comanda:</p>
+                        </div>
+                        <div class="col-xs-8" th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0 " >
+                            <select class="form-control" th:field="*{orderName}">
+                                <option th:each="order : ${activeOrders}" th:text="${order.name}" th:value = "${order.name}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center" style="margin-top:20px">
+                        <a>
+                            <button th:if="${product.in_stock} == 'Y' and ${activeOrders.size()} != 0 "  class="btn btn-success" type="submit" name="action" value="add">Add</button>
+                            <button class="btn btn-success" type="submit" name="action" value="edit">Edit</button>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src = "/static/scripts/select.js"></script>
+</body>
+</html>

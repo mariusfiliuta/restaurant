@@ -46,6 +46,11 @@ public class CategoriesController {
         helpObject orderName = new helpObject();
         return orderName;
     }
+    @ModelAttribute("helpObject")
+    private helpObject getHelpObject(){
+        helpObject helpObject = new helpObject();
+        return helpObject;
+    }
 
     @ModelAttribute("categories")
     private List<Category> getContacts() {
@@ -67,11 +72,23 @@ public class CategoriesController {
         model.addAttribute("products", products);
         return "productsView";
     }
+    @RequestMapping (value = {"/search"}, method = RequestMethod.POST)
+    public String getSearchPage(helpObject helpObject, Model model){
+        return "redirect:/search/" + helpObject.getOrderName();
+    }
 
+    @RequestMapping (value = {"/search/{productName}"}, method = RequestMethod.GET)
+    public String getSearchedProducts(@PathVariable String productName, Model model){
+        Set<Product> searchedProducts = productService.findByName(productName);
+        model.addAttribute("searchedProducts", searchedProducts);
+        model.addAttribute("searchedTerm", productName);
+        return "searchedProductsPage";
+    }
     @RequestMapping(value = {"/addProduct/{productId}"}, method = RequestMethod.POST, params="action=add")
     public String addProductToOrder(@PathVariable long productId, helpObject orderName, Model model) {
             Product product = productService.findById(productId);
-            Order order = orderService.findByName(orderName.getOrderName());
+            productService.deleteFromStock(product);
+        Order order = orderService.findByName(orderName.getOrderName());
             if(orderProductService.findByProductAndOrder(product, order) == null) {
                 OrderProduct orderProduct = new OrderProduct();
                 orderProduct.setOrder(order);

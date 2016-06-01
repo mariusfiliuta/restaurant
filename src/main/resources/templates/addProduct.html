@@ -15,7 +15,7 @@
             <label class="control-label" for="nume">Name:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="nume" type = "text" placeholder = "Paste" th:field="*{productName}"/>
+            <input class="form-control" id="nume" type = "text" placeholder = "Paste" th:field="*{productName}" required="required"/>
             <p th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}" class="alert alert-danger"/>
         </div>
 
@@ -27,7 +27,7 @@
             <label class="control-label" for="pret" >Price:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="pret" placeholder = "12" type = "number" th:field="*{price}"/>
+            <input class="form-control" id="pret" placeholder = "12" type = "number" th:field="*{price}" required="required"/>
         </div>
         <div class = "col-xs-2"></div>
     </div>
@@ -47,7 +47,7 @@
             <label class="control-label" for="urlTOImage">Picture URL:</label>
         </div>
         <div class = "col-xs-6">
-            <input class="form-control" id="urlTOImage" type = "text" placeholder = "https:\\www.pozecumancare.ro\pizza.jpg" th:field="*{urlTOImage}"/>
+            <input class="form-control" id="urlTOImage" type = "text" placeholder = "https:\\www.pozecumancare.ro\pizza.jpg" th:field="*{urlTOImage}" required="required"/>
         </div>
         <div class = "col-xs-2"></div>
     </div>

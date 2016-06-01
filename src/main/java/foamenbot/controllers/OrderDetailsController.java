@@ -1,11 +1,10 @@
 package foamenbot.controllers;
 
+import foamenbot.model.History;
 import foamenbot.model.Order;
 import foamenbot.model.OrderProduct;
 import foamenbot.model.User;
-import foamenbot.services.OrderProductService;
-import foamenbot.services.OrderService;
-import foamenbot.services.UserService;
+import foamenbot.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +28,12 @@ public class OrderDetailsController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private MeseService meseService;
+    @Autowired
+    private HistoryService historyService;
+
     @Autowired
     private OrderProductService orderProductService;
 
@@ -57,7 +62,12 @@ public class OrderDetailsController {
 
     @RequestMapping(value = {"/finishOrder/{orderId}"}, method = RequestMethod.POST)
     public String finishOrder(@PathVariable long orderId, Model model){
-
+        Order myOrder = orderService.findById(orderId);
+        History orderHistory = new History(myOrder);
+        historyService.save(orderHistory);
+        meseService.findByName(myOrder.getName()).setStatus("liber");
+        orderProductService.delete(myOrder.getOrderProduct());
+        orderService.delete(myOrder);
         return "redirect:/addOrder";
     }
 }

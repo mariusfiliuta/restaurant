@@ -47,6 +47,19 @@ public class AddIngredientController {
         }
         if(ingredientService.findByName(ingredient.getName())!= null){
             ingredient.setId(ingredientService.findByName(ingredient.getName()).getId());
+            if(ingredient.getQuantityType().equals(ingredientService.findById(ingredient.getId()).getQuantityType()))
+                ingredient.setQuantity(ingredientService.findById(ingredient.getId()).getQuantity()+ingredient.getQuantity());
+            else
+                if(ingredient.getQuantityType().equals("kg")) {
+                    ingredient.setQuantity(ingredient.getQuantity() * 1000);
+                    ingredient.setQuantityType("g");
+                    ingredient.setQuantity(ingredientService.findById(ingredient.getId()).getQuantity()+ingredient.getQuantity());
+                }
+                else{
+                    ingredient.setQuantity(ingredient.getQuantity() / 1000);
+                    ingredient.setQuantityType("kg");
+                    ingredient.setQuantity(ingredientService.findById(ingredient.getId()).getQuantity()+ingredient.getQuantity());
+                }
         }
         ingredientService.save(ingredient);
         return "redirect:/addIngredient";

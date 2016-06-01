@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import foamenbot.repositories.ProductRepository;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -30,6 +31,11 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product findById(long id){ return productRepository.findById(id);}
+
+    @Override
+    public Set<Product> findByName(String name) {
+        return productRepository.findByProductNameContaining(name);
+    }
 
     @Override
     public boolean isInStock(Product product){
