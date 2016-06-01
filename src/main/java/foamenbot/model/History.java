@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +34,8 @@ public class History {
     @JoinColumn( name = "user_id")
     private User user;
 
+    @OneToMany(targetEntity = HistoryProduct.class, mappedBy = "history")
+    private Set<HistoryProduct> historyProducts;
 
     public History(){}
     public History(Order order){
@@ -43,6 +46,11 @@ public class History {
         this.totalPrice = order.getTotalPrice();
         this.tableName = order.getName();
         this.user = order.getUser();
+        Set<HistoryProduct> historyProductsaux = new HashSet<>();
+        for( OrderProduct orderProduct: order.getOrderProduct()){
+            historyProductsaux.add(new HistoryProduct(orderProduct,this));
+        }
+        this.historyProducts = historyProductsaux;
     }
 
     public long getId() {
@@ -91,5 +99,13 @@ public class History {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<HistoryProduct> getHistoryProducts() {
+        return historyProducts;
+    }
+
+    public void setHistoryProducts(Set<HistoryProduct> historyProducts) {
+        this.historyProducts = historyProducts;
     }
 }

@@ -15,6 +15,8 @@ public class HistoryServiceImpl implements HistoryService {
 
     @Autowired
     private HistoryRepository historyRepository;
+    @Autowired
+    private HistoryProductService historyProductService;
 
     @Override
     public Set<History> findAll() {
@@ -34,6 +36,7 @@ public class HistoryServiceImpl implements HistoryService {
     @Override
     public void save(History history) {
         historyRepository.save(history);
+        historyProductService.save(history.getHistoryProducts());
     }
 
     @Override
