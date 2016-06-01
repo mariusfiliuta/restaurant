@@ -17,6 +17,7 @@ public abstract class Product_ {
 	public static volatile SingularAttribute<Product, String> in_stock;
 	public static volatile SingularAttribute<Product, Category> category;
 	public static volatile SingularAttribute<Product, String> productName;
+	public static volatile SingularAttribute<Product, String> status;
 
 }
 
