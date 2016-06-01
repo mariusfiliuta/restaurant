@@ -1,0 +1,2 @@
+DELETE FROM `foame`.`users` WHERE `username`='admin';
+INSERT INTO `foame`.`users` (`id`, `username`, `password`, `role`, `name`) VALUES ('0', 'admin', '$2a$12$kLlTYlRfyXcSPxRwARZlr.pabX9urjbBVFsBzOqk.CI3ruOZv405y', 'ROLE_ADMIN', 'admin');
