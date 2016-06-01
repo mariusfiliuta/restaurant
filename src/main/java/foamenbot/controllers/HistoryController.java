@@ -1,9 +1,6 @@
 package foamenbot.controllers;
 
-import foamenbot.model.History;
-import foamenbot.model.Order;
-import foamenbot.model.OrderProduct;
-import foamenbot.model.User;
+import foamenbot.model.*;
 import foamenbot.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,7 +30,11 @@ public class HistoryController {
     private User getCurrentUser() {
         return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
     }
-
+    @ModelAttribute("search")
+    private helpObject getHelpObject(){
+        helpObject searchObject = new helpObject();
+        return searchObject;
+    }
     @ModelAttribute("history")
     private Set<History> getHistory() {
         return historyService.findAll();
@@ -42,6 +43,11 @@ public class HistoryController {
     @RequestMapping(value = {"/history"}, method = RequestMethod.GET)
     public String getHistory(Model model) {
         return "history";
+    }
+    //http://localhost:8080     /history/search?id=&waiter=wait&day=
+    @RequestMapping(value = {"/history/search/{searchId}/{searchWaiter}/{searchDay}"}, method = RequestMethod.GET)
+    public String getHistorySearch(@PathVariable long searchId, @PathVariable String searchWaiter, @PathVariable String searchDay, Model model){
+        return "searchedHistoryPage";
     }
 }
 

@@ -17,8 +17,14 @@
                     <li>
                         <a href="/categories">Menu</a>
                     </li>
+                    <li>
+                        <a href="/booking">Booking</a>
+                    </li>
                     <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addProduct">Add Product</a>
+                    </li>
+                    <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
+                        <a href="/createAdmin">Create User</a>
                     </li>
                     <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addIngredient">Add Ingredient To Stock</a>
