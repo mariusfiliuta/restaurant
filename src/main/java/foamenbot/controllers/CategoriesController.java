@@ -41,12 +41,12 @@ public class CategoriesController {
     private Set<Order> getActiveOrders() {
         return orderService.findByStatus("active");
     }
-    @ModelAttribute("orderName")
+    @ModelAttribute("myOrderName")
     private helpObject getOrderName(){
         helpObject orderName = new helpObject();
         return orderName;
     }
-    @ModelAttribute("helpObject")
+    @ModelAttribute("myHelpObject")
     private helpObject getHelpObject(){
         helpObject helpObject = new helpObject();
         return helpObject;
@@ -73,8 +73,8 @@ public class CategoriesController {
         return "productsView";
     }
     @RequestMapping (value = {"/search"}, method = RequestMethod.POST)
-    public String getSearchPage(helpObject helpObject, Model model){
-        return "redirect:/search/" + helpObject.getOrderName();
+    public String getSearchPage(helpObject myHelpObject, Model model){
+        return "redirect:/search/" + myHelpObject.getOrderName();
     }
 
     @RequestMapping (value = {"/search/{productName}"}, method = RequestMethod.GET)
@@ -85,10 +85,10 @@ public class CategoriesController {
         return "searchedProductsPage";
     }
     @RequestMapping(value = {"/addProduct/{productId}"}, method = RequestMethod.POST, params="action=add")
-    public String addProductToOrder(@PathVariable long productId, helpObject orderName, Model model) {
+    public String addProductToOrder(@PathVariable long productId, helpObject myOrderName    , Model model) {
             Product product = productService.findById(productId);
             productService.deleteFromStock(product);
-        Order order = orderService.findByName(orderName.getOrderName());
+        Order order = orderService.findByName(myOrderName.getOrderName());
             if(orderProductService.findByProductAndOrder(product, order) == null) {
                 OrderProduct orderProduct = new OrderProduct();
                 orderProduct.setOrder(order);

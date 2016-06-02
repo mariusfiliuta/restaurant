@@ -23,6 +23,10 @@ public class CreateAdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @ModelAttribute("currentUser")
+    private User getCurrentUser() {
+        return userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName()).get(0);
+    }
     @RequestMapping(value = {"/createAdmin"}, method = RequestMethod.GET)
     public String getCreateAdminPage(Model model) {
         User user = new User();

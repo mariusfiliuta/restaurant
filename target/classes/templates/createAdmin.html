@@ -8,7 +8,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
     </head>
     <body>
-        <form class="form-horizontal" th:action="@{/createAdmin}" th:object="${user}" method = "post">
+        <th:block th:include="common/navbar :: common-navbar"/>
+
+        <form class="form-horizontal" th:action="@{/createAdmin}" th:object="${user}" method = "post" style="margin-top:40px">
             <div class = "form-group">
                 <div class = "col-xs-4 text-right">
                     <label class="control-label" for="nume">User Name:</label>

@@ -29,11 +29,14 @@ public class Product {
     @Column(name = "url_to_image")
     private String urlTOImage;
 
+    @Column(name = "status")
+    private String status;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(targetEntity = ProductIngredient.class, mappedBy = "product")
     private List<ProductIngredient> ingredientList = new ArrayList<ProductIngredient>();
 
     public List<ProductIngredient> getIngredientList() {
@@ -100,5 +103,13 @@ public class Product {
 
     public void setUrlTOImage(String urlTOImage) {
         this.urlTOImage = urlTOImage;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

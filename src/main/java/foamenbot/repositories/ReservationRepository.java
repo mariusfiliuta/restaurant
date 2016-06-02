@@ -9,6 +9,7 @@ import java.util.Set;
 
 @Repository
 public interface ReservationRepository extends CrudRepository<Reservation, Long>{
+    Reservation findById(long id);
     Set<Reservation> findAll();
     Set<Reservation> findByStartDateContaining(String startDate);
 }
