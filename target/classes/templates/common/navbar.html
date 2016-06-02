@@ -23,6 +23,9 @@
                     <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
                         <a href="/addIngredient">Add Ingredient To Stock</a>
                     </li>
+                    <li th:if="${currentUser.role} == 'ROLE_ADMIN'">
+                        <a href="/requestIngredient">Request Ingredients</a>
+                    </li>
                     <li>
                         <a href="/addOrder">Create/See Orders</a>
                     </li>

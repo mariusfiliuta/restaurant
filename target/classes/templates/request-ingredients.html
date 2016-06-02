@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <th:block th:include="common/meta :: common-meta" />
+        <th:block th:include="common/assets :: common-styles" />
+        <link rel="stylesheet" href="/static/css/home.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+    </head>
+    <body>
+        <th:block th:include="common/navbar :: common-navbar"/>
+        <div class="alert alert-success" th:if="${(param.accepted != null) and (param.accepted[0] == 'true')}">
+            <p>Ingredients stocks successfully updated!</p>
+        </div>
+        <div class="alert alert-warning" th:if="${(param.expectation_failed != null) and (param.expectation_failed[0] == 'true')}">
+            <p>There are not enough stocks in the deposit!</p>
+        </div>
+        <div class="alert alert-danger" th:if="${(param.bad_request != null) and (param.bad_request[0] == 'true')}">
+            <p>Bad request!</p>
+        </div>
+        <div class = "panel panel-default">
+            <div class="panel-heading">Low quantity ingredients</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Quantity to Request</th>
+                        <th>Request</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ingredient : ${ingredientsWithLowQuantity}">
+                        <td th:text="${ingredient.name}" >Name</td>
+                        <td th:text="${ingredient.quantity}">Quantity</td>
+                        <td>
+                            <select id="myselect" class="form-control">
+                                <div>
+                                    <option  th:each="i : ${#numbers.sequence(1, 9)}" th:value="${i}" th:text="${i}"></option>
+                                </div>
+                            </select>
+                        </td>
+                        <td>
+                            <form id="form" th:action="@{'/requestIngredients/' + ${ingredient.name} +'/1'}" th:object = "${ingredient}" method = "post">
+                                <button type = "submit" class="btn btn-success">
+                                    Request ingredient
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="/static/scripts/select-ingredient.js"></script>
+    </body>
+</html>

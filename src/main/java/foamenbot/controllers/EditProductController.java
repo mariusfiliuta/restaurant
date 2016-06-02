@@ -82,4 +82,5 @@ public class EditProductController {
        productIngredientService.save(ingredient);
         return "redirect:/edit/" + id;
     }
+
 }
