@@ -20,7 +20,7 @@
 #Tehnologiile folosite 
 Limbajul principal folosit este java. Aplicatia este facuta cu ajutorul frameworkului Spring ce a ajutat in crearea automata a dependintelor intre componentele aplicatiei si realizarea legaturilor dintre Model View si Controller. Software-ul este creat sub forma unei aplicatii web si sunt folosite metodele GET/POST pentru a face transferul informatiilor intre paginile de acces. Pentru a aduce toate tehnologiile folosite in realizarea software-ului au fost aduse cu ajutorul tool-ului maven ce poate fi folosit in crearea oricarei aplicatii bazate pe java cu ajutorul caruia se pot introduce toate informatiile in fisierul pom.xml iar acesta realizeaza toate migrarile direct in aplicatie.
 
-#	View
+#View
 Crearea view-ului a fost realizata folosind XHTML, CSS, Bootstrap si JavaScript(JQuery). Preluarea informatiilor din Backend spre Frontend si viceversa a fost realizata cu ajutorul template-ului Thymeleaf ce poate fi integrat in XHTML.
 
 #Baza de date
